@@ -1,3 +1,4 @@
+import { UsersDTO } from './../src/services/users/dto/user.dto';
 import app from '../src/app';
 
 describe('authentication', () => {
@@ -6,14 +7,14 @@ describe('authentication', () => {
   });
   
   describe('local strategy', () => {
-    const userInfo = {
+    const userInfo: Partial<UsersDTO> = {
       email: 'someone@example.com',
       password: 'supersecret'
     };
 
     beforeAll(async () => {
       try {
-        await app.service('users').create(userInfo);
+        await app.service('users').create(userInfo, {});
       } catch (error) {
         // Do nothing, it just means the user already exists and can be tested
       }

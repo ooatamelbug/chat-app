@@ -5,7 +5,11 @@
     "outDir": "./lib",
     "rootDir": "./src",
     "strict": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "strictNullChecks":false,
+    "strictPropertyInitialization": false,
+    
   },
   "exclude": [
     "test"

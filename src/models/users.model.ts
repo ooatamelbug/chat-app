@@ -19,6 +19,12 @@ export default function (app: Application): Model<any> {
     facebookId: { type: String },
   
     twitterId: { type: String },
+
+    fullname: { type: String },
+
+    image: { type: String },
+
+    timesInter: { type: Number, default: 0 },
   
   }, {
     timestamps: true
