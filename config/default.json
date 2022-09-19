@@ -30,8 +30,8 @@
     "oauth": {
       "redirect": "/",
       "google": {
-        "key": "45956603700-gcahibtjkt1i2i46ot9m8tpdgniv9jil.apps.googleusercontent.com",
-        "secret": "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",
+        "key": "",
+        "secret": "",
         "scope": [
           "email",
           "profile",
