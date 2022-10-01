@@ -9,6 +9,8 @@ import configuration from '@feathersjs/configuration';
 import express from '@feathersjs/express';
 import socketio from '@feathersjs/socketio';
 
+import dotenv from 'dotenv';
+dotenv.config();
 
 import { Application } from './declarations';
 import logger from './logger';

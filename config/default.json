@@ -28,10 +28,13 @@
       "passwordField": "password"
     },
     "oauth": {
-      "redirect": "/",
+      "redirect": "http://localhost:3000/",
       "google": {
-        "key": "",
-        "secret": "",
+        "redirect_uri": "http://localhost:3000/oauth/google/callback",
+        "host": "http://localhost:3000/",
+        "callback": "/oauth/google/authenticate",
+        "key": "GOOGLE_CLIENT_ID",
+        "secret": "GOOGLE_CLIENT_SECRET",
         "scope": [
           "email",
           "profile",

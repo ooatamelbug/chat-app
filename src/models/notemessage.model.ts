@@ -10,14 +10,14 @@ export default function (app: Application): Model<any> {
   const mongooseClient: Mongoose = app.get('mongooseClient');
   const { Schema } = mongooseClient;
   const schema = new Schema({
-    reply: {
+    reply: [{
       userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
       },
       likes: Number,
       text: String
-    },
+    }],
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'users',

@@ -18,7 +18,7 @@ class FacebookStrategy extends OAuthStrategy {
     const accessToken = authResult.access_token;
     const { data } = await axios.get('https://graph.facebook.com/me', {
       headers: {
-        authorication: `bearer ${accessToken}`,
+        authorication: `Bearer ${accessToken}`,
       },
       params: {
         field: 'id,name,email,picture'

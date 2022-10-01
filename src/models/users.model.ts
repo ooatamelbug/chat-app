@@ -20,7 +20,8 @@ export default function (app: Application): Model<any> {
   
     twitterId: { type: String },
 
-    fullname: { type: String },
+    firstname: { type: String },
+    lastname: { type: String },
 
     image: { type: String },
 
