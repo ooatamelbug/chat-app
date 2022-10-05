@@ -47,6 +47,12 @@ class GoogleStrategy extends OAuthStrategy {
       email: profile.email,
     };
   }
+  
+  // async getProfile(authResult) {
+  // const accessToken = authResult.accessToken;
+  // const { data } = await axios.get(`https://openidconnect.googleapis.com/v1/userinfo?access_token=${accessToken}`);
+  // return data;
+  // }
 } 
 
 export default function(app: Application): void {

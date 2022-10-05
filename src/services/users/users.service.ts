@@ -15,6 +15,7 @@ declare module '../../declarations' {
 export default function (app: Application): void {
   const options = {
     Model: createModel(app),
+    lean: true,
     paginate: app.get('paginate')
   };
 

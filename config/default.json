@@ -28,9 +28,9 @@
       "passwordField": "password"
     },
     "oauth": {
-      "redirect": "http://localhost:3000/",
+      "redirect": "http://localhost:3000/login",
       "google": {
-        "redirect_uri": "http://localhost:3000/oauth/google/callback",
+        "redirect_uri": "http://localhost:3030/oauth/google/callback",
         "host": "http://localhost:3000/",
         "callback": "/oauth/google/authenticate",
         "key": "GOOGLE_CLIENT_ID",
@@ -42,12 +42,12 @@
         ]
       },
       "facebook": {
-        "key": "",
-        "secret": ""
+        "key": "FACEBOOK_CLIENT_ID",
+        "secret": "FACEBOOK_CLIENT_SECRET"
       },
       "twitter": {
-        "key": "",
-        "secret": ""
+        "key": "TWITTER_CLIENT_ID",
+        "secret": "TWITTER_CLIENT_SECRET"
       }
     }
   },

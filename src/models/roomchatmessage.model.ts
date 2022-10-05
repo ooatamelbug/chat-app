@@ -9,27 +9,34 @@ export default function (app: Application): Model<any> {
   const modelName = 'roomchatmessage';
   const mongooseClient: Mongoose = app.get('mongooseClient');
   const { Schema } = mongooseClient;
-  const schema = new Schema({
-    text: { type: String, required: true },
-    takeTime: Number,
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'users',
+  const schema = new Schema(
+    {
+      messages: [
+        {
+          messageText: { type: String},
+          takeTime: Number,
+          userId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'users',
+          },
+          likes: Number,
+          playerNumber: Number,
+          status: {
+            pass: Boolean,
+            play: Boolean,
+            change: Boolean,
+          },
+        },
+      ],
+      channelchat: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'channelchat',
+      },
     },
-    channelchat: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'users',
-    },
-    likes: Number,
-    room: String,
-    status: {
-      pass: Boolean,
-      play: Boolean,
-      change: Boolean,
+    {
+      timestamps: true,
     }
-  }, {
-    timestamps: true
-  });
+  );
 
   // This is necessary to avoid model compilation errors in watch mode
   // see https://mongoosejs.com/docs/api/connection.html#connection_Connection-deleteModel

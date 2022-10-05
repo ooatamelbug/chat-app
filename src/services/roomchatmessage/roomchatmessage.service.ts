@@ -8,14 +8,15 @@ import hooks from './roomchatmessage.hooks';
 // Add this service to the service type index
 declare module '../../declarations' {
   interface ServiceTypes {
-    'roomchatmessage': Roomchatmessage & ServiceAddons<any>;
+    roomchatmessage: Roomchatmessage & ServiceAddons<any>;
   }
 }
 
 export default function (app: Application): void {
   const options = {
     Model: createModel(app),
-    paginate: app.get('paginate')
+    lean: true,
+    paginate: app.get('paginate'),
   };
 
   // Initialize our service with any options it requires
@@ -25,4 +26,13 @@ export default function (app: Application): void {
   const service = app.service('roomchatmessage');
 
   service.hooks(hooks);
+
+  service.publish((data, context) => {
+    return app
+      .channel(`room/${data.roomId}`)
+      .filter(
+        (connection) =>
+          connection.user._id.toString() !== data.userId.toString()
+      );
+  });
 }

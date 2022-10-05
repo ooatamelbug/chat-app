@@ -11,6 +11,7 @@ export default function (app: Application): Model<any> {
   const { Schema } = mongooseClient;
   const schema = new Schema({
     name: { type: String, required: true }, 
+    ruuid: String,
     url: { type: String },
     desc: { type: String },
     type: { type: String },
@@ -19,7 +20,11 @@ export default function (app: Application): Model<any> {
       type: Boolean
     }, 
     typeWord: {
-      lang: String,
+      lang: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'languagechar',
+        required: true, 
+      },
       spiecal: {
         status: Boolean,
         alpha: String,
@@ -32,7 +37,6 @@ export default function (app: Application): Model<any> {
     room: {
       type: String,
     },
-    waitRoom: String,
     admin: { 
       type: mongoose.Schema.Types.ObjectId,
       ref: 'users',
@@ -43,7 +47,7 @@ export default function (app: Application): Model<any> {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
       },
-      timeInter: new Date,
+      timeInter: Date,
       numberInter: Number,
     }],
     usersWait: [{
@@ -51,7 +55,7 @@ export default function (app: Application): Model<any> {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
       },
-      timeInter: new Date,
+      timeInter: Date,
       numberInter: Number,
     }],  
   }, {

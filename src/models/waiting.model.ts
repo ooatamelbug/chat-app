@@ -1,32 +1,29 @@
-// users-model.ts - A mongoose model
+// waiting-model.ts - A mongoose model
 //
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
 import { Application } from '../declarations';
-import { Model, Mongoose } from 'mongoose';
+import mongoose, { Model, Mongoose } from 'mongoose';
 
 export default function (app: Application): Model<any> {
-  const modelName = 'users';
+  const modelName = 'waiting';
   const mongooseClient: Mongoose = app.get('mongooseClient');
-  const schema = new mongooseClient.Schema({
-  
-    email: { type: String, lowercase: true },
-    password: { type: String },
-  
-  
-    googleId: { type: String },
-  
-    facebookId: { type: String },
-  
-    twitterId: { type: String },
-
-    firstname: { type: String },
-    lastname: { type: String },
-
-    image: { type: String },
-
-    timesInter: { type: Number, default: 0 },
-  
+  const { Schema } = mongooseClient;
+  const schema = new Schema({
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'users',
+    },
+    roomId: { 
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'channelchat', 
+      required: true 
+    },
+    userConnectionId: String,
+    roomName: String,
+    memberNumber: Number,
+    linkRoom: String,
+    status: Boolean
   }, {
     timestamps: true
   });

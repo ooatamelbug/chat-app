@@ -1,14 +1,14 @@
-// Initializes the `channelchat` service on path `/channelchat`
+// Initializes the `languagechar` service on path `/languagechar`
 import { ServiceAddons } from '@feathersjs/feathers';
 import { Application } from '../../declarations';
-import { Channelchat } from './channelchat.class';
-import createModel from '../../models/channelchat.model';
-import hooks from './channelchat.hooks';
+import { Languagechar } from './languagechar.class';
+import createModel from '../../models/languagechar.model';
+import hooks from './languagechar.hooks';
 
 // Add this service to the service type index
 declare module '../../declarations' {
   interface ServiceTypes {
-    'channelchat': Channelchat & ServiceAddons<any>;
+    'languagechar': Languagechar & ServiceAddons<any>;
   }
 }
 
@@ -20,10 +20,10 @@ export default function (app: Application): void {
   };
 
   // Initialize our service with any options it requires
-  app.use('/channelchat', new Channelchat(options, app));
+  app.use('/languagechar', new Languagechar(options, app));
 
   // Get our initialized service so that we can register hooks
-  const service = app.service('channelchat');
+  const service = app.service('languagechar');
 
   service.hooks(hooks);
 }

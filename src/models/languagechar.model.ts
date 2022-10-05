@@ -1,4 +1,4 @@
-// users-model.ts - A mongoose model
+// languagechar-model.ts - A mongoose model
 //
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
@@ -6,27 +6,27 @@ import { Application } from '../declarations';
 import { Model, Mongoose } from 'mongoose';
 
 export default function (app: Application): Model<any> {
-  const modelName = 'users';
+  const modelName = 'languagechar';
   const mongooseClient: Mongoose = app.get('mongooseClient');
-  const schema = new mongooseClient.Schema({
-  
-    email: { type: String, lowercase: true },
-    password: { type: String },
-  
-  
-    googleId: { type: String },
-  
-    facebookId: { type: String },
-  
-    twitterId: { type: String },
-
-    firstname: { type: String },
-    lastname: { type: String },
-
-    image: { type: String },
-
-    timesInter: { type: Number, default: 0 },
-  
+  const { Schema } = mongooseClient;
+  const schema = new Schema({
+    languageName: { type: String, required: true },
+    charNumber: Number,
+    charType: [String],
+    chars: [
+      {
+        charType: String,
+        charNumber: Number,
+        charsInType: [
+          {
+            level: String,
+            levelName: String,
+            numberInLevel: Number,
+            chars: [String]
+          }
+        ]
+      }
+    ]
   }, {
     timestamps: true
   });

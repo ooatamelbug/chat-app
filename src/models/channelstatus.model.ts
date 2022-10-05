@@ -14,11 +14,15 @@ export default function (app: Application): Model<any> {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'users',    
     },
-    pastPlayer: {
+    currentPlayer: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'users',    
     },
-    timePlay: Number,
+    roomChannelId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'channelchat',    
+    },
+    timesPlay: Number,
     lastWord: String,
     lastChar: String,
     startChar: String,
@@ -28,7 +32,7 @@ export default function (app: Application): Model<any> {
       status: Boolean,
     },
     playerStatus: [{
-      users: {
+      userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',   
       },
