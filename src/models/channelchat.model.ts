@@ -13,9 +13,10 @@ export default function (app: Application): Model<any> {
     name: { type: String, required: true }, 
     ruuid: String,
     url: { type: String },
+    token: String,
     desc: { type: String },
     type: { type: String },
-    status: { type: Boolean },
+    status: { type: Boolean, default: false },
     typestop: {
       type: Boolean
     }, 
@@ -30,12 +31,14 @@ export default function (app: Application): Model<any> {
         alpha: String,
       }
     },
+    timing: Boolean,
+    time: {
+      timeNature: String,
+      timeValue: Number,
+    },
     typeChar: {
       random: Boolean,
       char: String
-    },
-    room: {
-      type: String,
     },
     admin: { 
       type: mongoose.Schema.Types.ObjectId,

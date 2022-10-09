@@ -1,40 +1,25 @@
-// users-model.ts - A mongoose model
+// languagetype-model.ts - A mongoose model
 //
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
 import { Application } from '../declarations';
-import { Model, Mongoose } from 'mongoose';
+import mongoose, { Model, Mongoose } from 'mongoose';
 
 export default function (app: Application): Model<any> {
-  const modelName = 'users';
+  const modelName = 'languagetype';
   const mongooseClient: Mongoose = app.get('mongooseClient');
-  const schema = new mongooseClient.Schema({
-  
-    email: { type: String, lowercase: true },
-    password: { type: String },
-  
-  
-    googleId: { type: String },
-  
-    facebookId: { type: String },
-  
-    twitterId: { type: String },
-
-    firstname: { type: String },
-    lastname: { type: String },
-
-    qrcodeImage: {
-      type: String
+  const { Schema } = mongooseClient;
+  const schema = new Schema({
+    charTypeName: { type: String, required: true },
+    charsNumber: Number,
+    level: String,
+    language: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'languagechar',
+      required: true, 
     },
-    
-    uuid: String,
-    
-    code: String,
-
-    image: { type: String },
-
-    timesInter: { type: Number, default: 0 },
-  
+    levelName: String,
+    chars: [String]
   }, {
     timestamps: true
   });

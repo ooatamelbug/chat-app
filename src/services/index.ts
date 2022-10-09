@@ -6,6 +6,7 @@ import roomchatmessage from './roomchatmessage/roomchatmessage.service';
 import notemessage from './notemessage/notemessage.service';
 import waiting from './waiting/waiting.service';
 import languagechar from './languagechar/languagechar.service';
+import languagetype from './languagetype/languagetype.service';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 export default function (app: Application): void {
@@ -16,4 +17,5 @@ export default function (app: Application): void {
   app.configure(notemessage);
   app.configure(waiting);
   app.configure(languagechar);
+  app.configure(languagetype);
 }

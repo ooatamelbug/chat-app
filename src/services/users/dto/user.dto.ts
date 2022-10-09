@@ -4,6 +4,7 @@ export class UsersDTO {
   googleId?: string;
   facebookId?: string;
   twitterId?: string;
-  fullname?: string;
-  image?: string;
+  firstname?: string;
+  lastname?: string;
+  profilePicture?: string;
 }

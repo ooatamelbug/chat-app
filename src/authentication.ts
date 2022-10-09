@@ -32,7 +32,9 @@ class FacebookStrategy extends OAuthStrategy {
     return {
       ...baseData,
       email: profile.email,
-      image: profile.picture, 
+      profilePicture: profile.picture,
+      firstname: profile['first_name'],
+      lastname: profile['last_name'],
     };
   }
 }
@@ -40,11 +42,12 @@ class FacebookStrategy extends OAuthStrategy {
 class GoogleStrategy extends OAuthStrategy {
   async getEntityData(profile: OAuthProfile,  existing: any, param: Params) {
     const baseData = await super.getEntityData(profile, existing, param);
-
     return {
       ...baseData,
       profilePicture: profile.picture,
       email: profile.email,
+      firstname: profile['given_name'],
+      lastname: profile['family_name'],
     };
   }
   

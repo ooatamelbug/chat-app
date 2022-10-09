@@ -1,15 +1,16 @@
 import { HooksObject } from '@feathersjs/feathers';
 import * as authentication from '@feathersjs/authentication';
+import beforeChannel from '../../hooks/before-channel';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const { authenticate } = authentication.hooks;
 
 export default {
   before: {
-    all: [ authenticate('jwt') ],
+    all: [authenticate('jwt'), beforeChannel()],
     find: [],
     get: [],
-    create: [],
+    create: [ ],
     update: [],
     patch: [],
     remove: []

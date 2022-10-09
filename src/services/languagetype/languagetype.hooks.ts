@@ -1,6 +1,5 @@
 import { HooksObject } from '@feathersjs/feathers';
 import * as authentication from '@feathersjs/authentication';
-import afterCreateLanguage from '../../hooks/after-create-language';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const { authenticate } = authentication.hooks;
@@ -20,7 +19,7 @@ export default {
     all: [],
     find: [],
     get: [],
-    create: [afterCreateLanguage()],
+    create: [],
     update: [],
     patch: [],
     remove: []
